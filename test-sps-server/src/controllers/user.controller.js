@@ -29,6 +29,24 @@ class UserController {
             return res.status(500).json({ message: "Erro ao buscar usuário" });
         }
     }
+
+    registerUser(req, res){
+        try {
+            const { name, email, type, password } = req.body;
+
+            const user = UserService.registerUser({name, email, type, password});
+
+            if(!user) {
+                return res.status(400).json({ message: "Todos os campos de usuário devem serem preenchidos" });
+            }
+
+            res.status(201).json(user);
+        }
+
+        catch (err) {
+            return res.status(500).json({ message: "Erro ao cadastrar usuário" });
+        }
+    }
 }
 
 module.exports = new UserController();
