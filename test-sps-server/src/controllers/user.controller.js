@@ -47,6 +47,30 @@ class UserController {
             return res.status(500).json({ message: "Erro ao cadastrar usuário" });
         }
     }
+
+    editUser(req, res){
+        try {
+            const { id } = req.params;
+            const user = UserService.getUserById(Number(id))
+
+            if(!user) {
+                return res.status(404).json({ message: "Usuário não existente para editar" });
+            }
+
+            const { name, email, type, password } = req.body;
+            const editedUser = UserService.editUser(Number(id), {name, email, type, password});
+
+            if(!editedUser) {
+                return res.status(400).json({ message: "Todos os campos de usuário devem serem preenchidos" });
+            }
+
+            res.status(201).json(editedUser);
+        }
+
+        catch (err) {
+            return res.status(500).json({ message: "Erro ao editar usuário" });
+        }
+    }
 }
 
 module.exports = new UserController();

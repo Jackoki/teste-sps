@@ -20,6 +20,18 @@ class UserService {
         users.push(newUser);
         return newUser;
     }
+
+    editUser(id, {name, email, type, password}) {
+        if(!name || !email || !type || !password) {
+            return null;
+        }
+
+        const userIndex = users.findIndex(u => u.id === id);
+
+        users[userIndex] = {...users[userIndex], name, email, type, password};
+
+        return users[userIndex];
+    }
 }
 
 module.exports = new UserService();
