@@ -1,11 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../contexts/AuthContext";
+import "../styles/Home.css";
 
 function Home() {
-  return (
-    <div>
-      <h1>SPS REACT TEST</h1>
+  const { logout } = useAuthContext();
+  const navigate = useNavigate();
 
-      <a href="/users">Usuários</a>
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
+
+  return (
+    <div className="home-container">
+      <div className="home-box">
+        <h1>Escolha o que deseja fazer:</h1>
+
+        <button onClick={() => navigate("/users")}>Ver Usuários</button>
+        <button onClick={() => navigate("/register")}>Registrar Usuário</button>
+        <button onClick={handleLogout}>Logoff</button>
+      </div>
     </div>
   );
 }
