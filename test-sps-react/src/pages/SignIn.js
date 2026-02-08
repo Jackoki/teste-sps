@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
+import "../styles/SignIn.css";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -12,14 +13,15 @@ function SignIn() {
   };
 
   return (
-    <div>
-      <h1>Página de Login</h1>
-      <form>
-        <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <button type="submit">Entrar</button>
-      </form>
-      <a href="/register">Registrar</a>
+    <div className="signin-container">
+      <div className="signin-box">
+          <h1>Página de Login</h1>
+          <form>
+            <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <Input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <button type="submit">Entrar</button>
+          </form>
+        </div>
     </div>
   );
 }
