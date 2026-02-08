@@ -1,4 +1,5 @@
 const { users } = require("../database/user.database");
+const { checkEmailExists } = require("../utils/user.utils");
 const User = require("../models/user.model");
 
 class UserService {
@@ -13,6 +14,10 @@ class UserService {
     registerUser({name, email, type, password}){
         if(!name || !email || !type || !password) {
             return null;
+        }
+
+        if(checkEmailExists(email)){
+            throw new Error("Email já cadastrado");
         }
 
         const newUser = new User(users.length + 1, name, email, type, password)

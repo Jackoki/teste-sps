@@ -1,4 +1,4 @@
-const UserService = require("../services/user.service");
+const UserService = require("../services/user.services");
 
 class UserController {
     getAllUsers(req, res) {
@@ -44,7 +44,8 @@ class UserController {
         }
 
         catch (err) {
-            return res.status(500).json({ message: "Erro ao cadastrar usuário" });
+            const standardMessage = "Erro ao cadastrar usuário";
+            return res.status(500).json({ message: err.message || standardMessage });
         }
     }
 
