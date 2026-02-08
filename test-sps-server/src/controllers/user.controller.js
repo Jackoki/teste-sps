@@ -1,9 +1,9 @@
 const UserService = require("../services/user.service");
 
 class UserController {
-    listUsers(req, res) {
+    getAllUsers(req, res) {
         try {
-            const users = UserService.listUsers();
+            const users = UserService.getAllUsers();
             return res.json(users.map(({ password, ...user}) => user));
         }
 
@@ -12,10 +12,10 @@ class UserController {
         }
     }
 
-    getUser(req, res) {
+    getUserById(req, res) {
         try {
             const { id } = req.params;
-            const user = UserService.getUser(Number(id));
+            const user = UserService.getUserById(Number(id));
 
             if(!user) {
                 return res.status(404).json({ message: "Usuário não encontado" });
