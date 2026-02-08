@@ -27,7 +27,7 @@ function Register() {
             <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             <button type="submit">Entrar</button>
           </form>
-          <a href="/home">Voltar para Tela de Login</a>
+          <a href="/home">Voltar para Home</a>
         </div>
     </div>
   );
