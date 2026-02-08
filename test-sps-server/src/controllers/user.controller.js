@@ -51,7 +51,7 @@ class UserController {
     editUser(req, res){
         try {
             const { id } = req.params;
-            const user = UserService.getUserById(Number(id))
+            const user = UserService.getUserById(Number(id));
 
             if(!user) {
                 return res.status(404).json({ message: "Usuário não existente para editar" });
@@ -69,6 +69,30 @@ class UserController {
 
         catch (err) {
             return res.status(500).json({ message: "Erro ao editar usuário" });
+        }
+    }
+
+    deleteUser(req, res){
+        try {
+            const { id } = req.params;
+            const user = UserService.getUserById(Number(id));
+
+            
+            if(!user) {
+                return res.status(404).json({ message: "Usuário não existente para deletar" });
+            }
+
+            const deletedUser = UserService.deleteUser(Number(id));
+
+            if(!deletedUser){
+                return res.status(400).json({ message: "Erro durante processo de deletar usuário" });
+            }
+
+            res.status(201).json({ message: "Usuário deletado com sucesso" });
+        }
+
+        catch (err) {
+            return res.status(500).json({ message: "Erro ao deletar usuário" });
         }
     }
 }

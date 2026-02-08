@@ -32,6 +32,14 @@ class UserService {
 
         return users[userIndex];
     }
+
+    deleteUser(id){
+        const userIndex = users.findIndex(u => u.id === id);
+        const userDeleted = users.splice(userIndex, 1);
+
+        return userDeleted;
+    }
+
 }
 
 module.exports = new UserService();
