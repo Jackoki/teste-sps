@@ -1,0 +1,33 @@
+import { createBrowserRouter } from "react-router-dom";
+
+import Home from "../pages/Home";
+import SignIn from "../pages/SignIn";
+import Users from "../pages/Users";
+import UserEdit, { userLoader } from "../pages/UserEdit";
+import Register from "../pages/Register";
+
+const router = createBrowserRouter([
+    {
+    path: "/",
+    element: <SignIn />,
+  },
+    {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
+  },  
+  {
+    path: "/users",
+    element: <Users />,
+  },
+  {
+    path: "/users/:userId",
+    element: <UserEdit />,
+    loader: userLoader,
+  },
+]);
+
+export default router;
