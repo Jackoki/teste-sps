@@ -5,6 +5,7 @@ import SignIn from "../pages/SignIn";
 import Users from "../pages/Users";
 import UserEdit, { userLoader } from "../pages/UserEdit";
 import Register from "../pages/Register";
+import AuthRoute from './AuthRoute'
 
 const router = createBrowserRouter([
     {
@@ -17,15 +18,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: (
+      <AuthRoute>
+        <Home />
+      </AuthRoute>
+    ),
   },  
   {
     path: "/users",
-    element: <Users />,
+    element: (
+      <AuthRoute>
+        <Users />
+      </AuthRoute>
+    ),  
   },
   {
     path: "/users/:userId",
-    element: <UserEdit />,
+    element: (
+      <AuthRoute>
+        <UserEdit />
+      </AuthRoute>
+    ),
     loader: userLoader,
   },
 ]);
