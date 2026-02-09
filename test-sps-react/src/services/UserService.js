@@ -9,8 +9,10 @@ class UserService {
     return response.data; 
   }
 
-    async get(id) {
-    throw new Error("Not implemented");
+  async get(id, token) {
+    return axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/get-user/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
   }
 
   async create(data, token) {
@@ -21,13 +23,18 @@ class UserService {
     return response.data;
   }
 
-  async delete(id) {
-    throw new Error("Not implemented");
+  async update(id, data, token) {
+    return axios.put(`${process.env.REACT_APP_BACKEND_URL}/users/edit-user/${id}`, data, { 
+      headers: { Authorization: `Bearer ${token}` } 
+    });
   }
 
-  async update(id, data) {
-    throw new Error("Not implemented");
+  async delete(id, token) {
+    return axios.delete(`${process.env.REACT_APP_BACKEND_URL}/users/delete-user/${id}`, { 
+      headers: { Authorization: `Bearer ${token}` } 
+    });
   }
+
 }
 
 export default UserService;

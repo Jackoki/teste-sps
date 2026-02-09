@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from "react";
-import UserService from "../services/UserService";
-import { useAuthContext } from "../contexts/AuthContext";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useUsers } from "../hooks/useUsers";
 import "../styles/Users.css";
 
 function Users() {
-  const [users, setUsers] = useState([]);
-  const { token } = useAuthContext();
+  const { users, loading, removeUser } = useUsers();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!token) {
-      return;
-    }
-
-    const fetchUsers = async () => {
-      try {
-        const service = new UserService();
-        const usersList = await service.list(token);
-        setUsers(usersList);
-      } 
-      
-      catch (err) {
-        alert(err.response?.data?.message || "Erro ao buscar usuários");
-      }
-    };
-
-    fetchUsers();
-  }, [token]);
+  if (loading) return <p>Carregando...</p>;
 
   return (
     <div className="users-container">
@@ -38,9 +20,14 @@ function Users() {
           <ul>
             {users.map(user => (
               <li key={user.id}>
-                <strong>{user.name}</strong>
-                <span>- {user.email}</span>
-                <span>({user.type})</span>
+                <span>
+                  <strong>{user.name}</strong> — {user.email} ({user.type})
+                </span>
+
+                <div className="actions">
+                  <button onClick={() => navigate(`/users/edit/${user.id}`)}>Editar</button>
+                  <button className="danger" onClick={() => removeUser(user.id)}>Excluir</button>
+                </div>
               </li>
             ))}
           </ul>
