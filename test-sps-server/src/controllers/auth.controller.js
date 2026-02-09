@@ -1,6 +1,7 @@
 const AuthService = require("../services/auth.services");
 
 class AuthController {
+    //Função usada para receber o email e senha pela requisição body e verifica as informações para assim return o token gerado pelo AuthService
     login(req, res) {
         try {
             const {email, password} = req.body;

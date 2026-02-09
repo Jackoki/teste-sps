@@ -2,6 +2,8 @@ const { users } = require("../database/user.database");
 const { checkEmailExists, generateNextId } = require("../utils/user.utils");
 const User = require("../models/user.model");
 
+//Service referente para o Usuário, tendo funcionalidades como retornar todos os usuário do database
+//Resgate de usuário por ID passado, registro, edição e deleção de usuários por meio do user.database
 class UserService {
     getAllUsers(){
         return users;

@@ -1,5 +1,7 @@
 const UserService = require("../services/user.services");
 
+//Funções para realizar a chamada no UserService, tanto para GET, POST, PUT ou DELETE
+//Aqui nós apenas controlamos as exceções e chamamos o Service para retornar as informações
 class UserController {
     getAllUsers(req, res) {
         try {
