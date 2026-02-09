@@ -36,7 +36,9 @@ Este repositório é referente a realização de uma etapa de teste para a cria�
 
     • Editar ou excluir usuários.
 
-
+# 🔐 Usuário Padrão
+Email: admin@spsgroup.com.br  
+Senha: 1234
 
 # 📑 Documentação
 O projeto contém a documentação das rotas pelo Swagger UI, para isso, basta apenas rodar a aplicação e pesquisar http://localhost:3000/api-docs no navegador.
