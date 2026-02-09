@@ -8,15 +8,23 @@ class UserService {
 
     return response.data; 
   }
+
     async get(id) {
     throw new Error("Not implemented");
   }
-  async create(data) {
-    throw new Error("Not implemented");
+
+  async create(data, token) {
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/register-user`, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response.data;
   }
+
   async delete(id) {
     throw new Error("Not implemented");
   }
+
   async update(id, data) {
     throw new Error("Not implemented");
   }
