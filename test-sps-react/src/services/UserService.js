@@ -1,11 +1,14 @@
 import axios from "axios";
 
 class UserService {
-  async list() {
-    const users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`);
-    return users;
+  async list(token) {
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/get-all-users`, {
+      headers: {Authorization: `Bearer ${token}`,},
+    });
+
+    return response.data; 
   }
-  async get(id) {
+    async get(id) {
     throw new Error("Not implemented");
   }
   async create(data) {
