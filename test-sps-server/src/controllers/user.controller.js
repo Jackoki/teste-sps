@@ -69,7 +69,8 @@ class UserController {
         }
 
         catch (err) {
-            return res.status(500).json({ message: "Erro ao editar usuário" });
+            const standardMessage = "Erro ao cadastrar usuário";
+            return res.status(500).json({ message: err.message || standardMessage });
         }
     }
 

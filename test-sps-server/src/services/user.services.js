@@ -1,5 +1,5 @@
 const { users } = require("../database/user.database");
-const { checkEmailExists } = require("../utils/user.utils");
+const { checkEmailExists, generateNextId } = require("../utils/user.utils");
 const User = require("../models/user.model");
 
 class UserService {
@@ -20,7 +20,7 @@ class UserService {
             throw new Error("Email já cadastrado");
         }
 
-        const newUser = new User(users.length + 1, name, email, type, password)
+        const newUser = new User(generateNextId(), name, email, type, password)
             
         users.push(newUser);
         return newUser;
@@ -29,6 +29,10 @@ class UserService {
     editUser(id, {name, email, type, password}) {
         if(!name || !email || !type) {
             return null;
+        }
+
+        if(checkEmailExists(email)){
+            throw new Error("Email já cadastrado");
         }
 
         const userIndex = users.findIndex(u => u.id === id);

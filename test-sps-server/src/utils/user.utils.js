@@ -8,4 +8,13 @@ function checkEmailExists(email){
     return false;
 }
 
-module.exports = {checkEmailExists}
+function generateNextId() {
+    if (users.length === 0) {
+        return 1;
+    }
+
+    return Math.max(...users.map(u => u.id)) + 1;
+}
+
+
+module.exports = {checkEmailExists, generateNextId}
