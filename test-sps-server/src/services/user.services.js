@@ -33,7 +33,7 @@ class UserService {
             return null;
         }
 
-        if(checkEmailExists(email)){
+        if (checkEmailExists(email, id)) {
             throw new Error("Email já cadastrado");
         }
 

@@ -3,6 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 import UserService from "../services/UserService";
 
+//Função utilizada para carregar informações do usuário selecionado na página de Users
+//Ao clicar em editar, temos a informação do seu ID e então pesquisamos as informações pelo Service, assim preenchendo as informações no formulário
+//Ao editar os dados, salva as alterações, sendo a senha opcional e não necessário para preencher
+//Aqui chamamos diversos hooks para resgatar parâmetros como o ID do usuário, token mas também para carregar os dados do usuário ao entrar na tela
+//O preenchimento de dados é feito pelo useEffect, do qual usa o UserService passando o id para setar as informações
+//Criamos também a função de saveUser() que acontece quando o usuário chamar no page
 export function useUserEdit() {
   const { userId } = useParams();
   const navigate = useNavigate();

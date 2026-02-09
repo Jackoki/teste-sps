@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import UserService from "../services/UserService";
 import { useAuthContext } from "../contexts/AuthContext";
 
+//Função utilizada para tanto listar os usuarios que são retornados pelo UserService como também permitir a deleção dos mesmos
+//Primeiro setamos o token e verificamos se estamos autenticados, se estivermos, realizamos a busca de usuários pelo service
+//Temos também a opção de deletar um usuário a partir do id passado, da qual é manipulado novamente pelo service 
 export function useUsers() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useUsers } from "../hooks/useUsers";
 import "../styles/Users.css";
 
+//Página para carregar usuários pelo hook do useUsers
+//As informações retornadas pelo hook são então carregadas, se não houver nenhum aparecerá "Nenhum usuário encontrado"
+//Se houver informações, será mapeado cada um para cada linha carregando o nome, email e tipo de usuário
+//Na frente de cada usuário, tem o botão de Editar que redireciona para a página de Editar Usuário ou o botão de excluir para excluir o usuário
 function Users() {
-  const { users, loading, removeUser } = useUsers();
+  const { users, removeUser } = useUsers();
   const navigate = useNavigate();
-
-  if (loading) return <p>Carregando...</p>;
 
   return (
     <div className="users-container">

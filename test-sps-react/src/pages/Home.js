@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 import "../styles/Home.css";
 
+//Tela simples, do qual temos apenas 3 botões, um para ir para a tela de listagem de usuários
+//Outra tela é utilizado para registrar um usuário e o outro para sair e tirar o token e ir pra tela de login
 function Home() {
   const { logout } = useAuthContext();
   const navigate = useNavigate();

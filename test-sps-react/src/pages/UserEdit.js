@@ -1,8 +1,12 @@
 import React from "react";
 import { useUserEdit } from "../hooks/useUserEdit";
 
+//Pagina para carregar informações do usuário, as informações em si vem do hook do useUserEdit
+//As informações que são retornadas do hook são preenchidas nos formulários e quaisquer mudanças nas mesmas são mudadas
+//Ao clicar no botão de salvar, chama novamente o hook com a função do saveUser
+
 function UserEdit() {
-  const {form, handleChange, saveUser, cancel,} = useUserEdit();
+  const {form, handleChange, saveUser} = useUserEdit();
 
   return (
     <div className="signin-container">

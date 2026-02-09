@@ -5,6 +5,9 @@ import Input from "../components/Input";
 import { useAuthContext } from "../contexts/AuthContext"; 
 import "../styles/SignIn.css";
 
+//Chamada de useStates para armazenar as alterações dos formulários para realizar chamada do handleLogin
+//O handleLogin é uma função assincrona do qual chama o useAuthContext() para validar as informações passadas
+//Se a função de login funcionar, vamos para a tela de home, se não aparecerá uma tela de aviso
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+//Função usada para gerenciar o token no local storage
+//Se for logar, setamos o jwt no localStorage, se for sair, apenas removemos e o setamos como null
 export function useAuth(){
     const [token, setToken] = useState(localStorage.getItem("token"));
 

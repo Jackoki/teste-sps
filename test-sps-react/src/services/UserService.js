@@ -1,5 +1,7 @@
 import axios from "axios";
 
+//Service é utilizado para comunicar com o back-end para as funções relacionadas a requisições de usuários
+//Temos tanto a questão de listagem de usuários como a criação, atualização ou deleção dos mesmos
 class UserService {
   async list(token) {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/get-all-users`, {

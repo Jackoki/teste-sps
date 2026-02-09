@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import UserService from "../services/UserService";
 import { useAuthContext } from "../contexts/AuthContext";
 
+//Tela de registro do qual tem 4 useStates para controlar as informações na hora de confirmar o registro
+//Nesse caso, precisamos setar o email, nome, tipo de usuário e a sua senha.
+//Com as informações setadas, se o usuário clicar no botão de registrar, será acionado a função assincrona handleRegister
+//O handleRegister chamará o UserService para a chamada da função service.create passando as informações da requisição
+//Se tudo der certo seremos direcionado para a tela home, caso contrário será chamado um aviso
 function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");

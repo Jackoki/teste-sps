@@ -6,6 +6,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+//Renderização a partir do router
 root.render(
   <React.StrictMode>
     <AuthProvider>
