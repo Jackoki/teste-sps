@@ -27,13 +27,13 @@ class UserService {
     }
 
     editUser(id, {name, email, type, password}) {
-        if(!name || !email || !type || !password) {
+        if(!name || !email || !type) {
             return null;
         }
 
         const userIndex = users.findIndex(u => u.id === id);
 
-        users[userIndex] = {...users[userIndex], name, email, type, password};
+        users[userIndex] = {...users[userIndex], name, email, type, ...(password && { password })};
 
         return users[userIndex];
     }

@@ -1,33 +1,28 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useUserEdit } from "../hooks/useUserEdit";
 
-export function userLoader({ params }) {
-  const user = {
-    id: params.userId,
-    name: "teste",
-    email: "teste@gmail.com",
-  };
-
-  return { user };
-}
-
-function EditUser() {
-  const { user } = useLoaderData();
+function UserEdit() {
+  const {form, handleChange, saveUser, cancel,} = useUserEdit();
 
   return (
-    <div>
-      <p>Edição de Usuário</p>
-      <div>
-        <form>
-          <label>Nome:</label>
-          <input type="text" value={user.name} />
-          <br />
-          <br />
+    <div className="signin-container">
+      <div className="signin-box">
+        <h1>Editar Usuário</h1>
+
+        <form onSubmit={(e) => { e.preventDefault(); saveUser();}}>
+          <input value={form.name} onChange={handleChange("name")} placeholder="Nome"/>
+          <input value={form.email} onChange={handleChange("email")} placeholder="Email"/>
+          <select value={form.type} onChange={handleChange("type")}>
+            <option value="user">Usuário</option>
+            <option value="admin">Administrador</option>
+          </select>
+          <input type="password" value={form.password} onChange={handleChange("password")} placeholder="Nova senha (opcional)"/>
           <button type="submit">Salvar</button>
         </form>
+        <a href="/users">Voltar</a>
       </div>
     </div>
   );
 }
 
-export default EditUser;
+export default UserEdit;

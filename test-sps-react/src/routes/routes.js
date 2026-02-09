@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import Users from "../pages/Users";
-import UserEdit, { userLoader } from "../pages/UserEdit";
+import UserEdit from "../pages/UserEdit";
 import Register from "../pages/Register";
 import AuthRoute from './AuthRoute'
 
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: (
       <AuthRoute>
-        <Register />,
+        <Register />
       </AuthRoute>
       )
   },
@@ -43,7 +43,6 @@ const router = createBrowserRouter([
         <UserEdit />
       </AuthRoute>
     ),
-    loader: userLoader,
   },
 ]);
 

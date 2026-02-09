@@ -22,16 +22,18 @@ function Users() {
               <li key={user.id}>
                 <span>
                   <strong>{user.name}</strong> — {user.email} ({user.type})
-                </span>
+                </span> 
 
                 <div className="actions">
-                  <button onClick={() => navigate(`/users/edit/${user.id}`)}>Editar</button>
+                  <button onClick={() => navigate(`/users/${user.id}`)}>Editar</button>
                   <button className="danger" onClick={() => removeUser(user.id)}>Excluir</button>
                 </div>
               </li>
             ))}
           </ul>
         )}
+
+        <a href="/home">Voltar para Home</a>
       </div>
     </div>
   );
